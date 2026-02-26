@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$if(title)$$title$$else$xqhare.net$endif$</title>
+    $if(author)$<meta name="author" content="$author$">$endif$
+    $if(header-includes)$
+    $header-includes$
+    $endif$
+</head>
+<body>
+    $if(title)$
+        <center>
+            <h1>$title$</h1>
+        </center>
+    $endif$
+    $body$
+    
+    <footer>
+        $if(include-after)$$include-after$$endif$
+    </footer>
+</body>
+</html>
