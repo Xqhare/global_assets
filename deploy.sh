@@ -23,19 +23,21 @@ if test -d "$PARENT_DIR/blog"; then
 	BLOG_DIR_UPDATED=true
 fi
 
-if $MAIN_DIR_UPDATED && $PROFILE_DIR_UPDATED && $BLOG_DIR_UPDATED; then
-	exit 0
-fi
-
 if ! $MAIN_DIR_UPDATED; then
-	echo "Missing main directory at $PARENT_DIR/main"
+	echo "ERROR: Missing main directory at $PARENT_DIR/main"
 fi
 
 if ! $PROFILE_DIR_UPDATED; then
-	echo "Missing profile directory at $PARENT_DIR/profile"
+	echo "ERROR: Missing profile directory at $PARENT_DIR/profile"
 fi
 
 if ! $BLOG_DIR_UPDATED; then
-	echo "Missing blog directory at $PARENT_DIR/blog"
+	echo "ERROR: Missing blog directory at $PARENT_DIR/blog"
 fi
-exit 1
+
+if ! $MAIN_DIR_UPDATED || ! $PROFILE_DIR_UPDATED || ! $BLOG_DIR_UPDATED; then
+	exit 1
+else
+	exit 0
+fi
+
