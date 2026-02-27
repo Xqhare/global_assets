@@ -28,12 +28,13 @@ pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$
 echo "Footer built"
 echo #
 echo "Building style"
-
-# Generate CSS include fragment
+echo #
+echo "Generate CSS include fragment"
 echo "<style>" > "$THIS_DIR/build/style.html"
 cat "$THIS_DIR/css/main.css" >> "$THIS_DIR/build/style.html"
 echo "</style>" >> "$THIS_DIR/build/style.html"
-
+echo "Generate CSS include fragment done"
+echo #
 echo "Style built"
 echo #
 echo "Building script done"
