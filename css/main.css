@@ -26,6 +26,9 @@ hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
     vertical-align: middle;
 }
 .header-content h1 { margin: 0; font-size: 1.5rem; }
+.logo-spacer {
+    flex-grow: 1;
+}
 footer { font-size: 0.9rem; color: #999; }
 table {
     font-family: sans-serif;
