@@ -21,7 +21,7 @@ hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
     align-items: center;
 }
 .header-logo {
-    height: auto;
+    height: 50px;
     width: auto;
     vertical-align: middle;
 }
