@@ -28,5 +28,6 @@ table {
 }
 td {
     text-align: center;
+    border: 2px solid rgb(140 140 140);
     padding: 8px 10px;
 }
