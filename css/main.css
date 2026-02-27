@@ -27,7 +27,7 @@ table {
     text-align: center;
 }
 td {
-    text-align: center;
+    text-align: justify;
     border: 2px solid rgb(140 140 140);
     padding: 8px 10px;
 }
