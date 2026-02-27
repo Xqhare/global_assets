@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xqhare's Profile</title>
+    <meta name="author" content="Xqhare">
+    <link rel="icon" type="image/png" href="/favicon.png?v=1">
+    $if(header-includes)$
+    $header-includes$
+    $endif$
+</head>
+<body>
+    $if(include-before)$$include-before$$endif$
+
+    <hr />
+
+    $body$
+    
+    <footer>
+        $if(include-after)$$include-after$$endif$
+    </footer>
+</body>
+</html>
