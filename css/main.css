@@ -21,12 +21,9 @@ hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
     align-items: center;
 }
 .header-logo {
-    height: 50px;
+    height: auto;
     width: auto;
     vertical-align: middle;
-    margin-right: 1rem;
-    /* Optional: slightly dim the logo in dark mode if needed */
-    filter: brightness(0.9);
 }
 .header-content h1 { margin: 0; font-size: 1.5rem; }
 footer { font-size: 0.9rem; color: #999; }
@@ -40,7 +37,6 @@ td {
     padding: 4px 6px;
 }
 blockquote {
-    border-left: 3px solid #333;
     margin: 1.5rem 0;
     padding-left: 1rem;
     font-style: italic;
