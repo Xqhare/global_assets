@@ -2,7 +2,13 @@
 
 echo "------------------------------------------------"
 echo #
-echo "Building script started"
+echo "Global assets building script started"
+echo #
+echo "Pulling global assets"
+echo #
+git pull origin master
+echo #
+echo "Pulling global assets done"
 echo #
 echo "Setting up environment"
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
