@@ -23,7 +23,16 @@ LOCKFILE="/tmp/global_assets_build.lock"
     CURRENT_REV=$(git rev-parse HEAD)
     LAST_REV_FILE="$THIS_DIR/build/.last_rev"
     
+    # Check if we should skip build
+    SKIP_BUILD=false
     if [ -f "$LAST_REV_FILE" ] && [ "$(cat "$LAST_REV_FILE")" == "$CURRENT_REV" ] && [ -d "$THIS_DIR/build" ]; then
+        # Also check if key files exist
+        if [ -f "$THIS_DIR/build/footer.html" ] && [ -f "$THIS_DIR/build/header.html" ] && [ -f "$THIS_DIR/build/style.html" ] && [ -f "$THIS_DIR/build/favicon.png" ]; then
+            SKIP_BUILD=true
+        fi
+    fi
+
+    if [ "$SKIP_BUILD" = true ]; then
         echo "Global assets are up to date (Revision: $CURRENT_REV). Skipping rebuild."
     else
         echo "Setting up environment"
