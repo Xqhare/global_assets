@@ -4,44 +4,63 @@ echo "------------------------------------------------"
 echo #
 echo "Global assets building script started"
 echo #
-echo "Pulling global assets"
-echo #
-git pull origin master
-echo #
-echo "Pulling global assets done"
-echo #
-echo "Setting up environment"
+
 THIS_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-if test -d "$THIS_DIR/build"; then
-	echo "Emptying old global assets build directory"
-	rm -rf "$THIS_DIR/build"
-fi
-mkdir -p "$THIS_DIR/build"
-echo "Setting up environment done"
-echo "- - - - - - - - - - - - - - - - - - - - - - - -"
-echo #
-echo "Building global assets"
-echo #
-echo "Building footer"
-pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$THIS_DIR/templates/footer.html" -o "$THIS_DIR/build/footer.html" "$THIS_DIR/elements/footer.md"
+LOCKFILE="/tmp/global_assets_build.lock"
 
-echo "Footer built"
-echo #
-echo "Building header"
-pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --template="$THIS_DIR/templates/header.html" -o "$THIS_DIR/build/header.html" "$THIS_DIR/elements/header.md"
+# Use a subshell to manage the lock
+(
+    # Acquire an exclusive lock (wait if necessary)
+    flock -x 200
 
-echo "Header built"
-echo #
-echo "Building style"
-echo #
-echo "Generate CSS include fragment"
-echo "<style>" > "$THIS_DIR/build/style.html"
-cat "$THIS_DIR/css/main.css" >> "$THIS_DIR/build/style.html"
-echo "</style>" >> "$THIS_DIR/build/style.html"
-echo "Generate CSS include fragment done"
-echo #
-echo "Style built"
-echo #
-echo "Building script done"
+    echo "Pulling global assets"
+    git pull origin master
+    echo "Pulling global assets done"
+    echo #
+
+    # Get the current commit hash
+    CURRENT_REV=$(git rev-parse HEAD)
+    LAST_REV_FILE="$THIS_DIR/build/.last_rev"
+    
+    if [ -f "$LAST_REV_FILE" ] && [ "$(cat "$LAST_REV_FILE")" == "$CURRENT_REV" ] && [ -d "$THIS_DIR/build" ]; then
+        echo "Global assets are up to date (Revision: $CURRENT_REV). Skipping rebuild."
+    else
+        echo "Setting up environment"
+        if test -d "$THIS_DIR/build"; then
+                echo "Emptying old global assets build directory"
+                rm -rf "$THIS_DIR/build"
+        fi
+        mkdir -p "$THIS_DIR/build"
+        echo "Setting up environment done"
+        echo "- - - - - - - - - - - - - - - - - - - - - - - -"
+        echo #
+        echo "Building global assets"
+        echo #
+        
+        echo "Building footer"
+        pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$THIS_DIR/templates/footer.html" -o "$THIS_DIR/build/footer.html" "$THIS_DIR/elements/footer.md"
+        echo "Footer built"
+        echo #
+
+        echo "Building header"
+        pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --template="$THIS_DIR/templates/header.html" -o "$THIS_DIR/build/header.html" "$THIS_DIR/elements/header.md"
+        echo "Header built"
+        echo #
+
+        echo "Building style"
+        echo "Generate CSS include fragment"
+        echo "<style>" > "$THIS_DIR/build/style.html"
+        cat "$THIS_DIR/css/main.css" >> "$THIS_DIR/build/style.html"
+        echo "</style>" >> "$THIS_DIR/build/style.html"
+        echo "Generate CSS include fragment done"
+        echo "Style built"
+        echo #
+
+        # Save the current revision
+        echo "$CURRENT_REV" > "$LAST_REV_FILE"
+        echo "Building script done"
+    fi
+) 200>$LOCKFILE
+
 echo "------------------------------------------------"
 exit 0
