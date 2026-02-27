@@ -25,7 +25,7 @@ table {
     letter-spacing: 1px;
 }
 td {
-    text-align: right;
+    text-align: left;
     border: 2px solid rgb(140 140 140);
     padding: 4px 6px;
 }
