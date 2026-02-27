@@ -15,7 +15,6 @@ hr { border: 0; border-top: 1px solid #eee; margin: 2rem 0; }
     justify-content: space-between;
 }
 .header-content h1 { margin: 0; font-size: 1.5rem; }
-.header-content nav a { margin-left: 1rem; }
 footer { font-size: 0.9rem; color: #777; }
 table {
     border-collapse: collapse;
@@ -25,7 +24,7 @@ table {
     letter-spacing: 1px;
 }
 td {
-    text-align: left;
+    text-align: center;
     border: 2px solid rgb(140 140 140);
     padding: 4px 6px;
 }
