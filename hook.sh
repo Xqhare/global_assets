@@ -8,3 +8,5 @@ cd "$THIS_DIR"
 # All services where they are used are built using the deploy.sh script
 # No need to waste CPU cycles building them without ever using them
 ./deploy.sh
+cd "$THIS_DIR/.."
+./cleanup_data.sh
