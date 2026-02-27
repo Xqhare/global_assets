@@ -37,6 +37,17 @@ LOCKFILE="/tmp/global_assets_build.lock"
         echo #
         echo "Building global assets"
         echo #
+
+        echo "Building pictures"
+        echo #
+        echo "Building favicon"
+        ln -s "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/pictures/favicon.png"
+        echo "Favicon built"
+        echo #
+        echo "Building logo"
+        ln -s "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/pictures/logo.png"
+        echo "Logo built"
+        echo #
         
         echo "Building footer"
         pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$THIS_DIR/templates/footer.html" -o "$THIS_DIR/build/footer.html" "$THIS_DIR/elements/footer.md"
