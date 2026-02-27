@@ -57,6 +57,12 @@ LOCKFILE="/tmp/global_assets_build.lock"
         echo "Style built"
         echo #
 
+        echo "Copying logo assets"
+        cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/favicon.png"
+        cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/logo.png"
+        echo "Copying logo assets done"
+        echo #
+
         # Save the current revision
         echo "$CURRENT_REV" > "$LAST_REV_FILE"
         echo "Building script done"

@@ -13,6 +13,17 @@ hr { border: 0; border-top: 1px solid #eee; margin: 2rem 0; }
 .header-content {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+.logo-and-title {
+    display: flex;
+    align-items: center;
+}
+.header-logo {
+    height: 50px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 1rem;
 }
 .header-content h1 { margin: 0; font-size: 1.5rem; }
 footer { font-size: 0.9rem; color: #777; }
