@@ -11,8 +11,6 @@ a { color: #007bff; text-decoration: none; }
 a:hover { text-decoration: underline; }
 hr { border: 0; border-top: 1px solid #eee; margin: 2rem 0; }
 .header-content {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 .header-content h1 { margin: 0; font-size: 1.5rem; }
@@ -26,7 +24,6 @@ table {
     letter-spacing: 1px;
 }
 td {
-    text-align: right;
     border: 2px solid rgb(140 140 140);
     padding: 4px 6px;
 }
