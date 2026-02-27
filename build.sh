@@ -27,6 +27,11 @@ pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$
 
 echo "Footer built"
 echo #
+echo "Building header"
+pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --template="$THIS_DIR/templates/header.html" -o "$THIS_DIR/build/header.html" "$THIS_DIR/elements/header.md"
+
+echo "Header built"
+echo #
 echo "Building style"
 echo #
 echo "Generate CSS include fragment"
