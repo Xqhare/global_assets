@@ -18,6 +18,7 @@ LOCKFILE="/tmp/global_assets_build.lock"
     echo "Pulling global assets done"
     echo #
 
+
     # Get the current commit hash
     CURRENT_REV=$(git rev-parse HEAD)
     LAST_REV_FILE="$THIS_DIR/build/.last_rev"
