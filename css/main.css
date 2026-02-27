@@ -19,5 +19,6 @@ hr { border: 0; border-top: 1px solid #eee; margin: 2rem 0; }
 .header-content nav a { margin-left: 1rem; }
 footer { font-size: 0.9rem; color: #777; }
 td {
-  text-align: center;
+    text-align: center;
+    padding: 8px 10px;
 }
