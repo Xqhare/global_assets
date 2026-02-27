@@ -69,7 +69,7 @@ LOCKFILE="/tmp/global_assets_build.lock"
         echo #
 
         echo "Copying logo assets"
-        cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/favicon.png"
+        cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/favicon.ico"
         cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/logo.png"
         echo "Copying logo assets done"
         echo #
