@@ -1,7 +1,6 @@
 ---
-# Already supports a comma separated list of years
 years: 2026
-impressum: http://xqhare.net/impressum
+impressum: http://xqhare.net/imp
 copyright_holder: Xqhare
 ---
 
