@@ -60,15 +60,24 @@ table {
 }
 
 td {
-    text-align: center;
 }
 
 .header-td {
+    text-align: center;
     padding: 4px 6px;
 }
 
+.footer-td-l {
+    text-align: left;
+}
+
 .footer-td {
+    text-align: center;
     border: 1px solid #333;
+}
+
+.footer-td-r {
+    text-align: right;
 }
 
 blockquote {
