@@ -13,11 +13,10 @@ LOCKFILE="/tmp/global_assets_build.lock"
     # Acquire an exclusive lock (wait if necessary)
     flock -x 200
 
-    echo "Pulling global assets"
+    echo "Pulling global assets repository..."
     git pull origin master
-    echo "Pulling global assets done"
+    echo "Pulling global assets repository done."
     echo #
-
 
     # Get the current commit hash
     CURRENT_REV=$(git rev-parse HEAD)
@@ -35,48 +34,51 @@ LOCKFILE="/tmp/global_assets_build.lock"
     if [ "$SKIP_BUILD" = true ]; then
         echo "Global assets are up to date (Revision: $CURRENT_REV). Skipping rebuild."
     else
-        echo "Setting up environment"
+        echo "Setting up environment..."
         if test -d "$THIS_DIR/build"; then
-                echo "Emptying old global assets build directory"
+                echo "Emptying old global assets build directory..."
                 rm -rf "$THIS_DIR/build"
         fi
         mkdir -p "$THIS_DIR/build"
-        echo "Setting up environment done"
+        echo "Setting up environment done."
         echo "- - - - - - - - - - - - - - - - - - - - - - - -"
         echo #
-        echo "Building global assets"
-        echo #
+
+        echo "Building global assets..."
         
-        echo "Building footer"
+        echo "Building footer..."
         pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$THIS_DIR/templates/footer.html" -o "$THIS_DIR/build/footer.html" "$THIS_DIR/elements/footer.md"
-        echo "Footer built"
+        echo "Footer built."
         echo #
 
-        echo "Building header"
+        echo "Building header..."
         pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --template="$THIS_DIR/templates/header.html" -o "$THIS_DIR/build/header.html" "$THIS_DIR/elements/header.md"
-        echo "Header built"
+        echo "Header built."
         echo #
 
-        echo "Building style"
-        echo "Generate CSS include fragment"
+        echo "Building style include fragment..."
         echo "<style>" > "$THIS_DIR/build/style.html"
         cat "$THIS_DIR/css/main.css" >> "$THIS_DIR/build/style.html"
         echo "</style>" >> "$THIS_DIR/build/style.html"
-        echo "Generate CSS include fragment done"
-        echo "Style built"
+        echo "Style include fragment built."
         echo #
 
-        echo "Copying logo and favicon assets"
+        echo "Copying logo and favicon assets..."
         cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/favicon.png"
         cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/logo.png"
-        echo "Copying logo and favicon assets done"
+        echo "Copying logo and favicon assets done."
         echo #
 
         # Save the current revision
         echo "$CURRENT_REV" > "$LAST_REV_FILE"
-        echo "Building script done"
+        echo "Building global assets done."
+        echo "- - - - - - - - - - - - - - - - - - - - - - - -"
+        echo #
     fi
 ) 200>$LOCKFILE
 
 echo "------------------------------------------------"
+echo #
+echo "Global assets building script finished"
+echo #
 exit 0
