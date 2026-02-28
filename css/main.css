@@ -55,13 +55,20 @@ table {
 
 .footer-table {
     table-layout: fixed;
-        width: 100%;
+    width: 100%;
     font-size: 0.7rem;
 }
 
 td {
     text-align: center;
+}
+
+.header-td {
     padding: 4px 6px;
+}
+
+.footer-td {
+    padding: 1px 2px;
 }
 
 blockquote {
