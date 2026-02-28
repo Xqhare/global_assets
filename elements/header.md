@@ -1,11 +1,1 @@
-<header>
-    <div class="header-content">
-        <h1>xqhare.net</h1>
-        <nav>
-            <a href="https://xqhare.net">Home</a>
-            <a href="https://blog.xqhare.net">Blog</a>
-            <a href="https://profile.xqhare.net">Profile</a>
-        </nav>
-    </div>
-</header>
-<hr />
+
