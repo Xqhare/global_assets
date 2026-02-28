@@ -1,0 +1,26 @@
+<hr />
+<div class="blog-snippet">
+    $if(title)$
+        <h2>
+            <a href="/posts/$title$/">$if(display_title)$$display_title$$else$$title$$endif$</a>
+            $if(date)$ • <small><b>$date$</b></small>$endif$
+        </h2>
+    $endif$
+    <p>
+        $if(author)$<small>By $author$</small>$endif$
+        $if(tags)$ • <small><i>$for(tags)$$it$$sep$, $endfor$</i></small>$endif$
+    </p>
+    $if(featured_image)$
+        <div class="blog-snippet-image">
+            <a href="/posts/$title$/">
+                <img src="/posts/$title$/$featured_image$" alt="Preview of $if(display_title)$$display_title$$else$$title$$endif$">
+            </a>
+        </div>
+    $endif$
+    
+    $if(abstract)$<p><i>$abstract$</i></p>$endif$
+    
+    <div class="blog-snippet-read-more">
+        <a href="/posts/$title$/">Read more →</a>
+    </div>
+</div>
