@@ -1,6 +1,6 @@
 ---
 years: 2026
-impressum: http://xqhare.net/imp
+impressum: https://xqhare.net/imp
 copyright_holder: Xqhare
 ---
 
