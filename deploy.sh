@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 echo "------------------------------------------------"
 echo #
@@ -40,24 +41,22 @@ fi
 
 if ! $MAIN_DIR_UPDATED; then
         echo "ERROR: Missing main directory at $PARENT_DIR/main"
+        exit 1
 fi
 
 if ! $PROFILE_DIR_UPDATED; then
         echo "ERROR: Missing profile directory at $PARENT_DIR/profile"
+        exit 1
 fi
 
 if ! $BLOG_DIR_UPDATED; then
         echo "ERROR: Missing blog directory at $PARENT_DIR/blog"
+        exit 1
 fi
 
-if ! $MAIN_DIR_UPDATED || ! $PROFILE_DIR_UPDATED || ! $BLOG_DIR_UPDATED; then
-        echo "------------------------------------------------"
-        exit 1
-else
-        echo "Deploying global assets done."
-        echo "- - - - - - - - - - - - - - - - - - - - - - - -"
-        echo #
-        echo "Deploying global assets script finished"
-        echo "------------------------------------------------"
-        exit 0
-fi
+echo "Deploying global assets done."
+echo "- - - - - - - - - - - - - - - - - - - - - - - -"
+echo #
+echo "Deploying global assets script finished"
+echo "------------------------------------------------"
+exit 0
