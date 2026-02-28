@@ -57,9 +57,7 @@ else
         echo "Deploying global assets done."
         echo "- - - - - - - - - - - - - - - - - - - - - - - -"
         echo #
-        echo "------------------------------------------------"
-        echo #
         echo "Deploying global assets script finished"
-        echo #
+        echo "------------------------------------------------"
         exit 0
 fi

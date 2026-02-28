@@ -13,8 +13,6 @@ cd "$THIS_DIR"
 # All services where they are used are built using the deploy.sh script
 ./deploy.sh
 
-echo "------------------------------------------------"
-echo #
 echo "Global assets web service hook script finished"
-echo #
+echo "------------------------------------------------"
 exit 0

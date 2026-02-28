@@ -69,16 +69,15 @@ LOCKFILE="/tmp/global_assets_build.lock"
         echo "Copying logo and favicon assets done."
         echo #
 
-        # Save the current revision
-        echo "$CURRENT_REV" > "$LAST_REV_FILE"
         echo "Building global assets done."
         echo "- - - - - - - - - - - - - - - - - - - - - - - -"
         echo #
+
+        # Save the current revision
+        echo "$CURRENT_REV" > "$LAST_REV_FILE"
     fi
 ) 200>$LOCKFILE
 
-echo "------------------------------------------------"
-echo #
 echo "Global assets building script finished"
-echo #
+echo "------------------------------------------------"
 exit 0
