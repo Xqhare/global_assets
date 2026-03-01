@@ -96,7 +96,7 @@ blockquote {
     padding-left: 1rem;
     font-style: italic;
     color: #bbb;
-    border-left: 3px solid #333;
+    /* DONT YOU DARE PUT A BORDER-LEFT HERE!!!!!!! IT LOOKS SHIT - JUST STOP */
 }
 
 /* Blog Styles */
