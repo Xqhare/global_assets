@@ -19,19 +19,13 @@ LOCKFILE="/tmp/global_assets_build.lock"
     echo "Pulling global assets repository done."
     echo #
 
-    # Get the current commit hash - this will be our cache-busting version
-    CURRENT_REV=$(git rev-parse --short HEAD)
-    
     TMP_BUILD="$THIS_DIR/build_tmp"
     if test -d "$TMP_BUILD"; then
             rm -rf "$TMP_BUILD"
     fi
     mkdir -p "$TMP_BUILD"
 
-    echo "Building global assets into temporary directory (Version: $CURRENT_REV)..."
-    
-    # Save version for other services to use
-    echo "$CURRENT_REV" > "$TMP_BUILD/version.txt"
+    echo "Building global assets into temporary directory..."
 
     echo "Building footer..."
     pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$THIS_DIR/templates/footer.html" -o "$TMP_BUILD/footer.html" "$THIS_DIR/elements/footer.md"
@@ -39,11 +33,9 @@ LOCKFILE="/tmp/global_assets_build.lock"
     echo #
 
     echo "Building header..."
-    # We pass the asset version to the header build
-    pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --metadata asset_v="$CURRENT_REV" --template="$THIS_DIR/templates/header.html" -o "$TMP_BUILD/header.html" "$THIS_DIR/elements/header.md"
+    pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --template="$THIS_DIR/templates/header.html" -o "$TMP_BUILD/header.html" "$THIS_DIR/elements/header.md"
     echo "Header built."
     echo #
-
     echo "Building style include fragment..."
     echo "<style>" > "$TMP_BUILD/style.html"
     cat "$THIS_DIR/css/main.css" >> "$TMP_BUILD/style.html"
@@ -67,11 +59,9 @@ LOCKFILE="/tmp/global_assets_build.lock"
         rm -rf "$THIS_DIR/build"
     fi
     mv "$TMP_BUILD" "$THIS_DIR/build"
-    
-    # Save the current revision for the legacy Rev file
-    echo "$CURRENT_REV" > "$THIS_DIR/build/.last_rev"
 
     echo "Building global assets done."
+
     echo "- - - - - - - - - - - - - - - - - - - - - - - -"
     echo #
     
