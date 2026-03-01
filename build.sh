@@ -54,7 +54,7 @@ LOCKFILE="/tmp/global_assets_build.lock"
     # Ensure these files exist before copying
     if [ -f "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" ]; then
         cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$TMP_BUILD/favicon.png"
-        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$TMP_BUILD/logo.png"
+        cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$TMP_BUILD/logo.png"
     else
         echo "WARNING: Shifted logo not found, falling back to original."
         cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$TMP_BUILD/favicon.png"
