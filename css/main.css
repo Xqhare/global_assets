@@ -16,6 +16,14 @@ a:hover { text-decoration: underline; }
 
 hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
 
+/* Responsive Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1rem auto;
+}
+
 .header-content {
     display: flex;
     justify-content: space-between;
@@ -31,6 +39,7 @@ hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
     height: 50px;
     width: auto;
     vertical-align: middle;
+    margin: 0; /* Override global img margin */
 }
 
 .header-content h1 { margin: 0; font-size: 1.5rem; }
@@ -59,9 +68,6 @@ table {
     font-size: 0.7rem;
 }
 
-td {
-}
-
 .header-td {
     text-align: center;
     padding: 4px 6px;
@@ -86,6 +92,12 @@ blockquote {
     color: #bbb;
 }
 
+/* Blog Styles */
+.post-content img {
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
 /* Blog Snippet Styles */
 .blog-snippet {
     text-align: center;
@@ -104,7 +116,7 @@ blockquote {
     max-height: 125px;
     width: auto;
     border-radius: 4px;
-    margin: 10px 0;
+    margin: 10px auto;
 }
 
 .blog-snippet-read-more {
