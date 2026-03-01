@@ -1,11 +1,12 @@
 <hr />
-<table class="footer-table">
-    <tr>
-        $if(impressum)$<td class="footer-td-l"><a href="$impressum$">Impressum</a></td>$endif$
-        <td class="footer-td">Copyright $if(years)$$years$$else$2026$endif$
-        @
-        $if(copyright_holder)$$copyright_holder$$else$xqhare.net$endif$
-        </td class="footer-td">
-        <td class="footer-td-r">Want to get in touch? <a href="mailto:xqhare@web.de">Write me an email!</a></td>
-    </tr>
-</table>
+<div class="footer-content">
+    <div class="footer-item footer-item-l">
+        $if(impressum)$<a href="$impressum$">Impressum</a>$endif$
+    </div>
+    <div class="footer-item footer-item-c">
+        Copyright $if(years)$$years$$else$2026$endif$ @ $if(copyright_holder)$$copyright_holder$$else$xqhare.net$endif$
+    </div>
+    <div class="footer-item footer-item-r">
+        Want to get in touch? <a href="mailto:xqhare@web.de">Write me an email!</a>
+    </div>
+</div>
