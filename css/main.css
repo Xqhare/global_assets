@@ -16,12 +16,17 @@ a:hover { text-decoration: underline; }
 
 hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
 
-/* Responsive Images */
+/* Responsive Images - Scale down only */
 img {
     max-width: 100%;
     height: auto;
+}
+
+/* Helper for explicitly centered block images (like in blog posts) */
+.center-img {
     display: block;
-    margin: 1rem auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Header & Navigation */
@@ -43,7 +48,6 @@ img {
     height: 50px;
     width: auto;
     vertical-align: middle;
-    margin: 0;
 }
 
 .header-content h1 { margin: 0; font-size: 1.5rem; }
@@ -91,10 +95,13 @@ blockquote {
     padding-left: 1rem;
     font-style: italic;
     color: #bbb;
+    border-left: 3px solid #333;
 }
 
 /* Blog Styles */
 .post-content img {
+    display: block;
+    margin: 2rem auto;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
 }
@@ -115,6 +122,7 @@ blockquote {
 }
 
 .blog-snippet-image img {
+    display: block;
     max-height: 200px;
     width: auto;
     border-radius: 4px;
