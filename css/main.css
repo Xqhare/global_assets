@@ -51,12 +51,20 @@ img {
 .main-nav {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
 
 .main-nav a {
     font-size: 1rem;
     font-weight: 500;
     padding: 0.5rem 0;
+}
+
+.main-nav a:not(:last-child)::after {
+    content: "|";
+    margin-left: 1.5rem;
+    color: #333;
+    pointer-events: none;
 }
 
 /* Footer */
