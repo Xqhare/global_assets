@@ -16,10 +16,11 @@ a:hover { text-decoration: underline; }
 
 hr { border: 0; border-top: 1px solid #333; margin: 2rem 0; }
 
-/* Responsive Images - Scale down only */
+/* Responsive Images - Scale down only, respect inline attributes */
 img {
     max-width: 100%;
-    height: auto;
+    /* By not setting height: auto here, we allow height="40" to work.
+       If height is NOT set in HTML, it defaults to natural height. */
 }
 
 /* Helper for explicitly centered block images (like in blog posts) */
@@ -95,7 +96,7 @@ blockquote {
     padding-left: 1rem;
     font-style: italic;
     color: #bbb;
-    /* NO BORDER LEFT OR RIGHT*/
+    border-left: 3px solid #333;
 }
 
 /* Blog Styles */
@@ -104,6 +105,7 @@ blockquote {
     margin: 2rem auto;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    height: auto; /* For blog posts, we DO want auto height since they rarely have inline attributes */
 }
 
 /* Blog Snippet Styles */
