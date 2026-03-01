@@ -95,7 +95,7 @@ blockquote {
     padding-left: 1rem;
     font-style: italic;
     color: #bbb;
-    border-left: 3px solid #333;
+    /* NO BORDER LEFT OR RIGHT*/
 }
 
 /* Blog Styles */
