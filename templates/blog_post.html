@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$if(display_title)$$display_title$$else$$title$$endif$ - xqhare.net blog</title>
+    $if(author)$<meta name="author" content="$author$">$endif$
+    <link rel="icon" type="image/png" href="/favicon.png?v=1">
+    $if(header-includes)$
+    $header-includes$
+    $endif$
+</head>
+<body>
+    $if(include-before)$$include-before$$endif$
+
+    <center>
+        <h1>$if(display_title)$$display_title$$else$$title$$endif$</h1>
+        <p>
+            $if(date)$<small><b>$date$</b></small>$endif$
+            $if(author)$ • <small>By $author$</small>$endif$
+        </p>
+        $if(tags)$
+        <p>
+            <small><i>$for(tags)$$it$$sep$, $endfor$</i></small>
+        </p>
+        $endif$
+    </center>
+
+    <hr />
+
+    $body$
+    
+    <hr />
+    <p><a href="/">← Back to Blog Home</a></p>
+
+    <footer>
+        $if(include-after)$$include-after$$endif$
+    </footer>
+</body>
+</html>
