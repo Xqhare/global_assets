@@ -10,28 +10,36 @@
     $header-includes$
     $endif$
 </head>
-<body>
+<body class="blog-post-page">
     $if(include-before)$$include-before$$endif$
 
-    <center>
-        <h1>$if(display_title)$$display_title$$else$$title$$endif$</h1>
-        <p>
-            $if(date)$<small><b>$date$</b></small>$endif$
-            $if(author)$ • <small>By $author$</small>$endif$
-        </p>
-        $if(tags)$
-        <p>
-            <small><i>$for(tags)$$it$$sep$, $endfor$</i></small>
-        </p>
-        $endif$
-    </center>
+    <article>
+        <header>
+            <center>
+                <h1>$if(display_title)$$display_title$$else$$title$$endif$</h1>
+                <p>
+                    $if(date)$<small><b>$date$</b></small>$endif$
+                    $if(author)$ • <small>By $author$</small>$endif$
+                </p>
+                $if(tags)$
+                <p>
+                    <small><i>$for(tags)$$it$$sep$, $endfor$</i></small>
+                </p>
+                $endif$
+            </center>
+        </header>
 
-    <hr />
+        <hr />
 
-    $body$
-    
-    <hr />
-    <p><a href="/">← Back to Blog Home</a></p>
+        <div class="post-content">
+            $body$
+        </div>
+        
+        <hr />
+        <footer class="post-footer">
+            <p><a href="/">← Back to Blog Home</a></p>
+        </footer>
+    </article>
 
     <footer>
         $if(include-after)$$include-after$$endif$
