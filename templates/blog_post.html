@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$if(display_title)$$display_title$$else$$title$$endif$ - xqhare.net blog</title>
     $if(author)$<meta name="author" content="$author$">$endif$
-    <link rel="icon" type="image/png" href="/favicon.png?v=1">
+    <link rel="icon" type="image/png" href="/favicon.png?v=$if(asset_v)$$asset_v$$else$1$endif$">
     $if(header-includes)$
     $header-includes$
     $endif$

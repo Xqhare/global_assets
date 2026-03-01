@@ -19,27 +19,28 @@ LOCKFILE="/tmp/global_assets_build.lock"
     echo "Pulling global assets repository done."
     echo #
 
-    # Get the current commit hash
-    CURRENT_REV=$(git rev-parse HEAD)
+    # Get the current commit hash - this will be our cache-busting version
+    CURRENT_REV=$(git rev-parse --short HEAD)
     
-    # ATOMIC BUILD STRATEGY:
-    # Build into a temporary directory first, then swap it with the live 'build' directory.
-    # This prevents other services from seeing an empty or partial build directory.
     TMP_BUILD="$THIS_DIR/build_tmp"
     if test -d "$TMP_BUILD"; then
             rm -rf "$TMP_BUILD"
     fi
     mkdir -p "$TMP_BUILD"
 
-    echo "Building global assets into temporary directory..."
+    echo "Building global assets into temporary directory (Version: $CURRENT_REV)..."
     
+    # Save version for other services to use
+    echo "$CURRENT_REV" > "$TMP_BUILD/version.txt"
+
     echo "Building footer..."
     pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$THIS_DIR/templates/footer.html" -o "$TMP_BUILD/footer.html" "$THIS_DIR/elements/footer.md"
     echo "Footer built."
     echo #
 
     echo "Building header..."
-    pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --template="$THIS_DIR/templates/header.html" -o "$TMP_BUILD/header.html" "$THIS_DIR/elements/header.md"
+    # We pass the asset version to the header build
+    pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --metadata asset_v="$CURRENT_REV" --template="$THIS_DIR/templates/header.html" -o "$TMP_BUILD/header.html" "$THIS_DIR/elements/header.md"
     echo "Header built."
     echo #
 
@@ -51,12 +52,10 @@ LOCKFILE="/tmp/global_assets_build.lock"
     echo #
 
     echo "Copying logo and favicon assets..."
-    # Ensure these files exist before copying
     if [ -f "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" ]; then
         cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$TMP_BUILD/favicon.png"
         cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$TMP_BUILD/logo.png"
     else
-        echo "WARNING: Shifted logo not found, falling back to original."
         cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$TMP_BUILD/favicon.png"
         cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$TMP_BUILD/logo.png"
     fi
@@ -64,13 +63,12 @@ LOCKFILE="/tmp/global_assets_build.lock"
     echo #
 
     echo "Swapping temporary build with live build directory..."
-    # Atomic swap: remove old, move new
     if test -d "$THIS_DIR/build"; then
         rm -rf "$THIS_DIR/build"
     fi
     mv "$TMP_BUILD" "$THIS_DIR/build"
     
-    # Save the current revision for the skip-build logic (optional, keeping it fresh for now)
+    # Save the current revision for the legacy Rev file
     echo "$CURRENT_REV" > "$THIS_DIR/build/.last_rev"
 
     echo "Building global assets done."
