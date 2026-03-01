@@ -65,8 +65,8 @@ LOCKFILE="/tmp/global_assets_build.lock"
         echo #
 
         echo "Copying logo and favicon assets..."
-        cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/favicon.png"
-        cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$THIS_DIR/build/logo.png"
+        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$THIS_DIR/build/favicon.png"
+        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$THIS_DIR/build/logo.png"
         echo "Copying logo and favicon assets done."
         echo #
 
@@ -77,8 +77,8 @@ LOCKFILE="/tmp/global_assets_build.lock"
         # Save the current revision
         echo "$CURRENT_REV" > "$LAST_REV_FILE"
     fi
+    echo "Global assets building script finished"
+    echo "------------------------------------------------"
 ) 200>$LOCKFILE
 
-echo "Global assets building script finished"
-echo "------------------------------------------------"
 exit 0
