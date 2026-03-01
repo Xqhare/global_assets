@@ -23,60 +23,49 @@ LOCKFILE="/tmp/global_assets_build.lock"
     CURRENT_REV=$(git rev-parse HEAD)
     LAST_REV_FILE="$THIS_DIR/build/.last_rev"
     
-    # Check if we should skip build
-    SKIP_BUILD=false
-    if [ -f "$LAST_REV_FILE" ] && [ "$(cat "$LAST_REV_FILE")" == "$CURRENT_REV" ] && [ -d "$THIS_DIR/build" ]; then
-        # Also check if key files exist
-        if [ -f "$THIS_DIR/build/footer.html" ] && [ -f "$THIS_DIR/build/header.html" ] && [ -f "$THIS_DIR/build/style.html" ] && [ -f "$THIS_DIR/build/favicon.png" ] && [ -f "$THIS_DIR/build/logo.png" ]; then
-            SKIP_BUILD=true
-        fi
+    echo "Setting up environment..."
+    if test -d "$THIS_DIR/build"; then
+            echo "Emptying old global assets build directory..."
+            rm -rf "$THIS_DIR/build"
     fi
+    mkdir -p "$THIS_DIR/build"
+    echo "Setting up environment done."
+    echo "- - - - - - - - - - - - - - - - - - - - - - - -"
+    echo #
 
-    if [ "$SKIP_BUILD" = true ]; then
-        echo "Global assets are up to date (Revision: $CURRENT_REV). Skipping rebuild."
-    else
-        echo "Setting up environment..."
-        if test -d "$THIS_DIR/build"; then
-                echo "Emptying old global assets build directory..."
-                rm -rf "$THIS_DIR/build"
-        fi
-        mkdir -p "$THIS_DIR/build"
-        echo "Setting up environment done."
-        echo "- - - - - - - - - - - - - - - - - - - - - - - -"
-        echo #
+    echo "Building global assets..."
+    
+    echo "Building footer..."
+    pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$THIS_DIR/templates/footer.html" -o "$THIS_DIR/build/footer.html" "$THIS_DIR/elements/footer.md"
+    echo "Footer built."
+    echo #
 
-        echo "Building global assets..."
-        
-        echo "Building footer..."
-        pandoc -f gfm-autolink_bare_uris -t html --metadata title="footer" --template="$THIS_DIR/templates/footer.html" -o "$THIS_DIR/build/footer.html" "$THIS_DIR/elements/footer.md"
-        echo "Footer built."
-        echo #
+    echo "Building header..."
+    pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --template="$THIS_DIR/templates/header.html" -o "$THIS_DIR/build/header.html" "$THIS_DIR/elements/header.md"
+    echo "Header built."
+    echo #
 
-        echo "Building header..."
-        pandoc -f gfm-autolink_bare_uris -t html --metadata title="header" --template="$THIS_DIR/templates/header.html" -o "$THIS_DIR/build/header.html" "$THIS_DIR/elements/header.md"
-        echo "Header built."
-        echo #
+    echo "Building style include fragment..."
+    echo "<style>" > "$THIS_DIR/build/style.html"
+    cat "$THIS_DIR/css/main.css" >> "$THIS_DIR/build/style.html"
+    echo "</style>" >> "$THIS_DIR/build/style.html"
+    echo "Style include fragment built."
+    echo #
 
-        echo "Building style include fragment..."
-        echo "<style>" > "$THIS_DIR/build/style.html"
-        cat "$THIS_DIR/css/main.css" >> "$THIS_DIR/build/style.html"
-        echo "</style>" >> "$THIS_DIR/build/style.html"
-        echo "Style include fragment built."
-        echo #
+    echo "Copying logo and favicon assets..."
+    # We use shifted variant by default now
+    cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$THIS_DIR/build/favicon.png"
+    cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$THIS_DIR/build/logo.png"
+    echo "Copying logo and favicon assets done."
+    echo #
 
-        echo "Copying logo and favicon assets..."
-        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$THIS_DIR/build/favicon.png"
-        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$THIS_DIR/build/logo.png"
-        echo "Copying logo and favicon assets done."
-        echo #
+    echo "Building global assets done."
+    echo "- - - - - - - - - - - - - - - - - - - - - - - -"
+    echo #
 
-        echo "Building global assets done."
-        echo "- - - - - - - - - - - - - - - - - - - - - - - -"
-        echo #
-
-        # Save the current revision
-        echo "$CURRENT_REV" > "$LAST_REV_FILE"
-    fi
+    # Save the current revision
+    echo "$CURRENT_REV" > "$LAST_REV_FILE"
+    
     echo "Global assets building script finished"
     echo "------------------------------------------------"
 ) 200>$LOCKFILE
