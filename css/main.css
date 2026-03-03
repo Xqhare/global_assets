@@ -23,6 +23,11 @@ img {
        If height is NOT set in HTML, it defaults to natural height. */
 }
 
+table {
+    border-collapse: collapse;
+    border-style: solid;
+}
+
 /* Helper for explicitly centered block images (like in blog posts) */
 .center-img {
     display: block;
