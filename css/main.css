@@ -26,8 +26,11 @@ img {
 table {
     border-collapse: collapse;
 }
-th, td {
+td {
     border: 1px solid #333;
+}
+th {
+    border: 1px double #333;
 }
 
 /* Helper for explicitly centered block images (like in blog posts) */
