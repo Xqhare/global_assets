@@ -25,7 +25,9 @@ img {
 
 table {
     border-collapse: collapse;
-    border-style: solid;
+}
+th, td {
+    border: 1px solid #333;
 }
 
 /* Helper for explicitly centered block images (like in blog posts) */
