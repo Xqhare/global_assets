@@ -10,37 +10,37 @@
     $header-includes$
     $endif$
 </head>
-<body class="main_landing">
+<body>
     $if(include-before)$$include-before$$endif$
+    <div class="main_landing">
+        <article>
+            <header>
+                <center>
+                    <h1>$if(display_title)$$display_title$$else$$title$$endif$</h1>
+                    <p>
+                        $if(date)$<small><b>$date$</b></small>$endif$
+                        $if(author)$ • <small>By $author$</small>$endif$
+                    </p>
+                    $if(tags)$
+                    <p>
+                        <small><i>$for(tags)$$it$$sep$, $endfor$</i></small>
+                    </p>
+                    $endif$
+                </center>
+            </header>
 
-    <article>
-        <header>
-            <center>
-                <h1>$if(display_title)$$display_title$$else$$title$$endif$</h1>
-                <p>
-                    $if(date)$<small><b>$date$</b></small>$endif$
-                    $if(author)$ • <small>By $author$</small>$endif$
-                </p>
-                $if(tags)$
-                <p>
-                    <small><i>$for(tags)$$it$$sep$, $endfor$</i></small>
-                </p>
-                $endif$
-            </center>
-        </header>
+            <hr />
 
-        <hr />
+            <div class="post-content">
+                $body$
+            </div>
 
-        <div class="post-content">
-            $body$
-        </div>
-        
-        <hr />
-        <footer class="post-footer">
-            <p><a href="/">← Back to Blog Home</a></p>
-        </footer>
-    </article>
-
+            <hr />
+            <footer class="post-footer">
+                <p><a href="/">← Back to Blog Home</a></p>
+            </footer>
+        </article>
+    </div>
     <footer>
         $if(include-after)$$include-after$$endif$
     </footer>
