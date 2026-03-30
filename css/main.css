@@ -31,8 +31,6 @@ td, th {
 }
 
 .main_landing {
-    display: flex;
-    justify-content: space-between;
     width: 70%
 }
 
