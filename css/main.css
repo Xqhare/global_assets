@@ -31,7 +31,7 @@ td, th {
 }
 
 .main_landing {
-    width: 50px;
+    margin: 25%;
 }
 
 /* Helper for explicitly centered block images (like in blog posts) */
