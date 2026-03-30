@@ -35,7 +35,7 @@ td, th {
     margin-left: 25%;
 }
 
-/* Helper for explicitly centered block images (like in blog posts) */
+/* Helper for explicitly centered block images (like in -p posts) */
 .center-img {
     display: block;
     margin-left: auto;
