@@ -31,7 +31,8 @@ td, th {
 }
 
 .main_landing {
-    margin: 25%;
+    margin-right: 25%;
+    margin-left: 25%;
 }
 
 /* Helper for explicitly centered block images (like in blog posts) */
