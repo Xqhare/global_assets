@@ -154,6 +154,9 @@ blockquote {
         margin: 1rem auto;
     }
 
+    .main_landing {
+    }
+
     .header-content {
         flex-direction: column;
         text-align: center;
