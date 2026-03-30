@@ -30,6 +30,12 @@ td, th {
     border: 1px solid #333;
 }
 
+.main_landing {
+    display: flex;
+    justify-content: space-between;
+    width: 70%
+}
+
 /* Helper for explicitly centered block images (like in blog posts) */
 .center-img {
     display: block;

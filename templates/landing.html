@@ -13,29 +13,30 @@
 <body>
     $if(include-before)$$include-before$$endif$
 
-    $if(title)$
-        <center>
-            <h1>$title$</h1>
-        </center>
-    $endif$
+    <div class="main_landing">
+        $if(title)$
+            <center>
+                <h1>$title$</h1>
+            </center>
+        $endif$
 
-    $if(quote)$
-        <center>
-            <blockquote>
-                $quote$
-            </blockquote>
-            $if(quotee)$
-            <small>
-                - $quotee$
-            </small>
-            $endif$
-        </center>
-    $endif$
+        $if(quote)$
+            <center>
+                <blockquote>
+                    $quote$
+                </blockquote>
+                $if(quotee)$
+                <small>
+                    - $quotee$
+                </small>
+                $endif$
+            </center>
+        $endif$
 
-    <hr />
+        <hr />
 
-    $body$
-    
+        $body$
+    </div>
     <footer>
         $if(include-after)$$include-after$$endif$
     </footer>
