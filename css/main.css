@@ -155,6 +155,8 @@ blockquote {
     }
 
     .main_landing {
+        margin-right: 5px;
+        margin-left: 5px;
     }
 
     .header-content {
