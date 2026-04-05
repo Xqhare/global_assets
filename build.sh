@@ -44,9 +44,9 @@ LOCKFILE="/tmp/global_assets_build.lock"
     echo #
 
     echo "Copying logo and favicon assets..."
-    if [ -f "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" ]; then
-        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$TMP_BUILD/favicon.png"
-        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.png" "$TMP_BUILD/logo.png"
+    if [ -f "$THIS_DIR/pictures/transparent_small_250x250_shifted.webp" ]; then
+        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.webp" "$TMP_BUILD/favicon.png"
+        cp "$THIS_DIR/pictures/transparent_small_250x250_shifted.webp" "$TMP_BUILD/logo.png"
     else
         cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$TMP_BUILD/favicon.png"
         cp "$THIS_DIR/pictures/transparent_small_250x250.png" "$TMP_BUILD/logo.png"
